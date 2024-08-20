@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .navbar-fixed {
+    @apply z-[9999] bg-white bg-opacity-70 backdrop-blur-sm;
+    box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+} */
+
+.hamburger-line {
+    @apply w-[35px] h-[4px] my-2 block bg-dark mr-[20px];
+}
+
+.hamburger-active > span:nth-child(1) {
+    @apply rotate-45;
+}
+
+.hamburger-active > span:nth-child(2) {
+    @apply scale-0;
+}
+
+.hamburger-active > span:nth-child(3) {
+    @apply -rotate-45;
+}
+
+#dark-toggle:checked ~ label div.toggle-circle {
+    @apply translate-x-3
+}
+
+#dark-icon {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#dark-icon.scale-up {
+    transform: scale(1.5);
+    opacity: 0;
+}
+
+#dark-icon.scale-down {
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+body {
+    transition: background-color 0.5s ease-in-out;
+}
+
+body.dark {
+    background-color: #1C1C1C; /* Warna gelap, sesuaikan sesuai kebutuhan */
+}
+
+body.light {
+    background-color: #ffffff; /* Warna terang, sesuaikan sesuai kebutuhan */
+}
+
+#background-home {
+    transition: background-color 0.5s ease-in-out;
+}
+
+#background-home.dark {
+    background-color: #1C1C1C; /* Warna gelap, sesuaikan sesuai kebutuhan */
+}
+
+#background-home.light {
+    background-color: #ffffff; /* Warna terang, sesuaikan sesuai kebutuhan */
+}
+
+.hidden-picture {
+    display: none;
+}
+
+.hidden-picture {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.visible-picture {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#horizontal-scroll {
+    scrollbar-color: transparent transparent;
+}
+
+#horizontal-scroll::-webkit-scrollbar {
+    display: none;
+}
