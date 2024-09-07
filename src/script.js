@@ -1,15 +1,26 @@
-// Navbar Fixed
-// window.onscroll = function () {
-//     const header = document.querySelector('header')
-//     const fixedNav = header.offsetTop
-//     const toTop = document.querySelector('#to-top')
+const navLinks = document.querySelectorAll('.nav-link');
 
-//     if (window.pageYOffset > fixedNav) {
-//         header.classList.add('navbar-fixed')
-//     } else {
-//         header.classList.remove('navbar-fixed')
-//     }
-// }
+function removeActiveClasses() {
+  navLinks.forEach(link => link.classList.remove('text-primary'));
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`);
+      removeActiveClasses();
+      activeLink.classList.add('text-primary');
+    }
+  });
+}, {
+  threshold: 0.7
+});
+
+const sections = document.querySelectorAll('section');
+sections.forEach(section => {
+  observer.observe(section);
+});
+
 
 // Hamburger
 const hamburger = document.querySelector('#hamburger')
@@ -27,27 +38,6 @@ window.addEventListener('click', function (e) {
         navMenu.classList.add('hidden')
     }
 })
-
-// // Darkmode toggle
-// const darkToggle = document.querySelector('#dark-toggle')
-// const html = document.querySelector('html')
-
-// darkToggle.addEventListener('click', function () {
-//     if (darkToggle.checked) {
-//         html.classList.add('dark')
-//         localStorage.theme = 'dark'
-//     } else {
-//         html.classList.remove('dark')
-//         localStorage.theme = 'light'
-//     }
-// })
-
-// // Pindahkan posisi toggle sesuai mode
-// if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-//     darkToggle.checked = true
-// } else {
-//   darkToggle.checked = false
-// }
 
 // Darkmode toggle
 const darkToggle = document.querySelector('#dark-toggle');
@@ -85,7 +75,7 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
     body.classList.remove('light');
     picture1.classList.replace('visible-picture', 'hidden-picture');
     picture2.classList.replace('hidden-picture', 'visible-picture');
-    darkIcon.textContent = '☀'; // Tampilkan icon matahari
+    darkIcon.textContent = '☀';
 } else {
     darkToggle.checked = false;
     html.classList.remove('dark');
@@ -93,25 +83,22 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
     body.classList.remove('dark');
     picture1.classList.replace('hidden-picture', 'visible-picture');
     picture2.classList.replace('visible-picture', 'hidden-picture');
-    darkIcon.textContent = '🌙'; // Tampilkan icon bulan
+    darkIcon.textContent = '🌙';
 }
 
 // Fungsi untuk animasi perubahan icon
 function animateIconChange(newIcon) {
-    // Tambahkan animasi "scale-up"
     darkIcon.classList.add('scale-up');
 
-    // Tunggu hingga animasi selesai, lalu ganti icon dan tambahkan animasi "scale-down"
     setTimeout(() => {
         darkIcon.textContent = newIcon;
         darkIcon.classList.remove('scale-up');
         darkIcon.classList.add('scale-down');
-    }, 300); // Waktu sesuai dengan durasi animasi (0.3s)
+    }, 300)
 
-    // Hapus animasi "scale-down" setelah selesai
     setTimeout(() => {
         darkIcon.classList.remove('scale-down');
-    }, 600); // 300ms (scale-up) + 300ms (scale-down)
+    }, 600);
 }
 
 
