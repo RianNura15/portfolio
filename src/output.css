@@ -1807,20 +1807,12 @@ body.light {
     margin-top: 200px;
   }
 
-  .lg\:mt-\[380px\] {
-    margin-top: 380px;
+  .lg\:mt-\[480px\] {
+    margin-top: 480px;
   }
 
   .lg\:mt-\[57px\] {
     margin-top: 57px;
-  }
-
-  .lg\:mt-\[400px\] {
-    margin-top: 400px;
-  }
-
-  .lg\:mt-\[480px\] {
-    margin-top: 480px;
   }
 
   .lg\:block {
